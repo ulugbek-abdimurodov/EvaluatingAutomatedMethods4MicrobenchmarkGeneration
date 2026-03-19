@@ -1,9 +1,0 @@
-Pair: pair_1
-  No regressions detected
-
-Pair: pair_2
-    [LLM] core/IgfsHandshakeResponseBenchmark/benchmarkReadExternal-benchmark-results.json: DETECTED (10.74% ± 8.56% slower before fix)
-    [LLM] core/IgfsHandshakeResponseBenchmark/benchmarkWriteExternal-benchmark-results.json: DETECTED (8.48% ± 8.08% slower before fix)
-
-Pair: pair_3
-  No regressions detected
