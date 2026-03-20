@@ -4,8 +4,11 @@ Evaluating Automated Methods for Microbenchmark Generation is a study that analy
 # Methods Overview
 This study explores and evaluates automated methods for generating performance microbenchmarks, focusing on two distinct approaches: ju2jmh, an automation tool that converts unit tests into microbenchmarks, and Large Language Models (LLMs), such as GPT-4, which directly generates microbenchmarks from source code.
 
-#### ju2jmh-augmented LLM
 ![ju2jmh+LLM Progress](img/ju2jmh+llm_progress.png)
 
 The following structure details the execution of this methodology as applied to the Apache Ignite project, focusing on the isolation and detection of performance regressions.
+
+![Standalone LLM](img/standalone_llm.png)
+
+The standalone LLM approach serves as a critical comparative baseline in this research, representing a "pure" generative methodology for performance test creation.
 
