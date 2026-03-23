@@ -1,5 +1,5 @@
 # EvaluatingAutomatedMethods4MicrobenchmarkGeneration
-Evaluating Automated Methods for Microbenchmark Generation is a study that analyzes how different automated methodologies (ju2jmh-augmented LLM and standalone LLM) impact the sensitivity and accuracy of regression detection campaigns in the context of Performance Engineering
+Evaluating Automated Methods for Microbenchmark Generation is a study that analyzes how different automated methodologies (ju2jmh-augmented LLM and standalone LLM) impact the sensitivity and accuracy of regression detection campaigns in the context of Performance Engineering.
 
 # Methods Overview
 This study explores and evaluates automated methods for generating performance microbenchmarks, focusing on two distinct approaches: ju2jmh, an automation tool that converts unit tests into microbenchmarks, and Large Language Models (LLMs), such as GPT-4, which directly generates microbenchmarks from source code.
@@ -10,7 +10,7 @@ This study explores and evaluates automated methods for generating performance m
 
 The following structure details the execution of this methodology as applied to the Apache Ignite project, focusing on the isolation and detection of performance regressions.
 
-### Standalane LLM approach
+### Standalone LLM approach
 
 ![Standalone LLM](img/standalone_llm.png)
 
@@ -51,9 +51,50 @@ To ensure reproducibility of the benchmarking experiments, the following environ
 
 A reference for ju2jmh project: https://github.com/alniniclas/junit-to-jmh
 
+## Evaluated Commit Pairs
+
+The experimental evaluation targets specific, real-world performance regressions within the [Apache Ignite](https://github.com/apache/ignite) project. These targets were identified based on the mining study conducted by Campos et al., providing a verified ground truth for our benchmarking methodologies.
+
+For each target, we analyzed a Parent Commit (the version containing the performance bottleneck) and a Fix Commit (the version where the optimization was implemented).
+
+| Pair |  Parent Commit (Buggy) | Fix Commit (Optimized) |
+|------|-----------------------|------------------------|
+| Pair 1 | 9d82f2ca06fa6069c1976cc75814874256b24f8c | b038730ee56a662f73e02bbec83eb1712180fa82 |
+| Pair 2 | 227599fbbd007427d817284d8be64386e18c4e7e | feba95348391938aa7bb32499c647103b6a0a16f |
+| Pair 3 | 5224c9de4bea8d905bd53cd1699e5da2267f70c4 | 160dab09587a4c6ebdcfd71368360cfcb153575b |
+
+### Method Changes
+
+The specific Java methods and logic changes analyzed within these commits are documented in [data/method_changes.json](data/method_changes.json). This file serves as the technical reference for which code paths were targeted during the microbenchmark generation phase (using both the Standalone LLM and ju2jmh pipelines).
+
+Step 1: Repository Checkout and Preparation
+The evaluation compares the performance of Apache Ignite across two states: the Parent (pre-fix) state containing the regression and the Fix (post-fix) state where the optimization was applied.
+
+1. Clone the Target System
+First, clone the official Apache Ignite repository and navigate into the project root:
+
+Bash
+git clone https://github.com/apache/ignite.git
+cd ignite
+
+2. Navigate to Experimental Versions
+To reproduce the results for a specific pair, you must checkout the relevant commit hash. For example, to prepare the environment for Pair 3 (IgniteUtils):
+
+To test the version with the performance issue:
+
+Bash
+git checkout //commit (parent/fix)
+
+3. Build the Environment
+After each checkout, you must rebuild the core module to ensure the specific logic of that commit is compiled. Ensure you are using Java 8 and Maven 3.9.10.
+
+Bash
+# Build the core module and resolve dependencies
+mvn clean install -pl modules/core -am -DskipTests -Dmaven.javadoc.skip=true
+[!IMPORTANT]
+Because microbenchmarks are highly sensitive to the binary state of the system, you must run mvn clean install every time you switch between a Parent and a Fix commit to ensure no artifacts from the previous version remain in the target/ folders.
 
 ## ju2jmh-augmented LLM
-
 
 ## Analyzed Data
 
