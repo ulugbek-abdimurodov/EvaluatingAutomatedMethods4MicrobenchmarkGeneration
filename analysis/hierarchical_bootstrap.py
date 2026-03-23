@@ -157,10 +157,17 @@ def discover_benchmark_pairs(base_dir: Path):
     """
     pairs = defaultdict(lambda: defaultdict(lambda: {'ju2jmh': defaultdict(dict), 'llm': defaultdict(dict)}))
     
+    # Results root directory.
+    # Historical name: ignite_results/
+    # Current repo layout: data/
     results_dir = base_dir / "ignite_results"
-    
     if not results_dir.exists():
-        raise ValueError(f"Expected 'ignite_results' directory in {base_dir}")
+        results_dir = base_dir / "data"
+
+    if not results_dir.exists():
+        raise ValueError(
+            f"Expected results directory 'data' (or legacy 'ignite_results') in {base_dir}"
+        )
     
     # Process each pair directory
     for pair_dir in sorted(results_dir.iterdir()):
@@ -264,7 +271,7 @@ def main():
     if total_pairs == 0:
         print("ERROR: No pairs found!")
         print("Expected directory structure:")
-        print("  ignite_results/")
+        print("  data/  (or legacy: ignite_results/)")
         print("    pair_1/")
         print("      before_<hash>/")
         print("        core/ju2jmh/")
