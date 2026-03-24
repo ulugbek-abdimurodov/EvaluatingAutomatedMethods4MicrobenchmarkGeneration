@@ -49,8 +49,6 @@ To ensure reproducibility of the benchmarking experiments, the following environ
 
 ---
 
-A reference for ju2jmh project: https://github.com/alniniclas/junit-to-jmh
-
 ## Analyzed Data
 
 All the previous phases are applied to a real-world, industrial-grade system: Apache Ignite. This system contains historically documented performance regressions, and the goal is to apply the two automated microbenchmark generation methodologies (ju2jmh-augmented LLM and Standalone LLM) to determine if the generated performance tests can successfully isolate and detect the performance degradation and its subsequent fix. The target methods within the system are analyzed across two distinct states by performing a checkout on three precise pairs of commits:
@@ -102,11 +100,10 @@ Because microbenchmarks are highly sensitive to the binary state of the system, 
 #### Generate the JUnit by using GPT-4
 Ask from GPT-4 to generate JUnit as follows: "Generate the class_name + Test class to test method_name of class_name":
 
+***Example for IgniteUtils:***
 ***Generate the IgniteUtilsTest class to test ceilPow2 of IgniteUtils***
 
 Once GPT-4 has generated the functional JUnit test class, it must be integrated into the Apache Ignite source tree.
-
-Example for IgniteUtils:
 
 *Target Path: modules/core/src/test/java/org/apache/ignite/internal/util/IgniteUtilsTest.java*
 
