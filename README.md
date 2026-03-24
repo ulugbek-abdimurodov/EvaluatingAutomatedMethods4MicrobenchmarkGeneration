@@ -6,7 +6,7 @@ This study explores and evaluates automated methods for generating performance m
 
 ### ju2jmh+LLM approach
 
-![ju2jmh+LLM Progress](img/ju2jmh+llm_progress.png)
+![ju2jmh+LLM Progress](img/ju2jmh.png)
 
 The following structure details the execution of this methodology as applied to the Apache Ignite project, focusing on the isolation and detection of performance regressions.
 
