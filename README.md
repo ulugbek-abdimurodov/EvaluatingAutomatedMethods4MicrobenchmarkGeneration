@@ -1,4 +1,4 @@
-# EvaluatingAutomatedMethods4MicrobenchmarkGeneration
+# EAM4MBG - Evaluating Automated Methods for Microbenchmark Generation
 Evaluating Automated Methods for Microbenchmark Generation is a study that analyzes how different automated methodologies (ju2jmh-augmented LLM and standalone LLM) impact the sensitivity and accuracy of regression detection campaigns in the context of Performance Engineering.
 
 # Methods Overview
