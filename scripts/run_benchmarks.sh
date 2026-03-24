@@ -1,0 +1,1 @@
+java -jar target/jmh-benchmarks.jar org.apache.ignite.internal.util.IgniteUtilsTest.ceilPow2 -f 10 -i 3000 -r 100ms -wi 0 -bm sample -tu ms -rf json -rff benchmark-results.json

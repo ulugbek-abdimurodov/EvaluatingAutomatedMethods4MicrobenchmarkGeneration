@@ -1,0 +1,1 @@
+gradle converter:run --args="/Users/admiral/Documents/UNISA/Thesis/ignite/test/modules/core/src/test/java/ /Users/admiral/Documents/UNISA/Thesis/ignite/test/modules/core/target/test-classes/ /Users/admiral/Documents/UNISA/Thesis/ignite/test/modules/ju2jmh/src/jmh/java/ org.apache.ignite.internal.util.IgniteUtilsTest"

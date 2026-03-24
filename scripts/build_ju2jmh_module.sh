@@ -1,0 +1,1 @@
+mvn clean install -pl modules/ju2jmh -am -DskipTests -Dmaven.javadoc.skip=true

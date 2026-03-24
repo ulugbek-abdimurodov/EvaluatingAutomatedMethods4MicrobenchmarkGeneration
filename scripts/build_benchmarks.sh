@@ -1,0 +1,1 @@
+mvn clean install -pl modules/benchmarks -am -DskipTests -Dmaven.javadoc.skip=true
